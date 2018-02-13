@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>xAPI launcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            color: #212121;
+            background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiM1RjRCOEIiPjwvcGF0aD4KPC9zdmc+");
+        }
+
+      
+
+        h1 {
+            color: #5F4B8B;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #999999;
+        }
+
+        input::-moz-placeholder {
+            color: #999999;
+        }
+
+        input:-ms-input-placeholder {
+            color: #999999;
+        }
+
+        input:-moz-placeholder {
+            color: #999999;
+        }
+
+        input:focus::-webkit-input-placeholder {
+            color: #5F4B8B
+        }
+
+        input:focus::-moz-placeholder {
+            color: #5F4B8B
+        }
+
+        input:foucs:-ms-input-placeholder {
+            color: #5F4B8B
+        }
+
+        input:focus:-moz-placeholder {
+            color: #5F4B8B;
+        }
+
+        form {
+
+            /*border: .0625rem solid #c9c9c9;*/
+            margin: .5rem;
+            padding: 0.75rem 0.5rem 1.125rem;
+
+        }
+
+        ul {
+            list-style: none;
+            padding: 0.75rem;
+        }
+
+        .container {
+            max-width: 610px;
+            margin: 60px auto;
+
+            padding: 0.75rem 0.5rem 1.125rem;
+
+            border-radius: 5px;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 0 10px 10px 0;
+            padding: 15px;
+            border-radius: 3px;
+            background-color: #333333;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            -webkit-transition: background-color 0.5s ease-out;
+            -moz-transition: background-color 0.5s ease-out;
+            -o-transition: background-color 0.5s ease-out;
+            transition: background-color 0.5s ease-out;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: #5F4B8B;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>xAPI Learning Cohort 2018</h1>
+        <div>
+            <h3>Please fill in the field below to launch test</h3>
+            <label for="fullname">Fullname:</label>
+            <br>
+            <input id="fullname_id" type="text" name="fullname" value="" placeholder="Fullname">
+            <label for="email">Email Address:</label>
+            <br>
+            <input id="email_id" type="text" name="email" value="" placeholder="name@example.com">
+        </div>
+        <ul>
+            <li>
+                <a class="btn" id="test-1" href="">Launch Test 1</a>
+            </li>
+
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    function load() {
+        var test1 = document.getElementById("test-1");
+        test1.addEventListener("click", launcher, false);
+    }
+    function launcher(e) {
+        e.preventDefault();
+        var n = e.target.getAttribute("id").split("-")[1]
+        var mbox = document.getElementById('email_id').value;
+       var fullname = document.getElementById('fullname_id').value;
+       if(document.getElementById('fullname_id').value===""){
+            fullname = "xAPI User-"+Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+       }
+       console.log(fullname)
+        var endpoint = "https://cloud.scorm.com/tc/XOA0SJAT70/sandbox/"
+        var url = "https://nachocinalli.github.io/xAPI-cohort-test-1/"
+        var params = ""
+        params += "?endpoint=" + endpoint;
+        params += "&actor={\"name\":\"" + fullname + "\",\"mbox\":\"mailto:" + mbox + "\"}";
+        params = encodeURI(params)
+        if (mbox !== "") {
+            var win = window.open(url + params, '_blank');
+            win.focus();
+        } else {
+            document.getElementById("email_id").focus();
+        }
+    }
+    document.addEventListener("DOMContentLoaded", load, false);
+</script>
+</html>
