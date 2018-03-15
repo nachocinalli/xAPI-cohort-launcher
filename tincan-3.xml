@@ -3,7 +3,7 @@
     <activities>
         <activity id="http://nachocinalli.github.io/xAPI-cohort-test-3/" type="http://adlnet.gov/expapi/activities/course">
             <name lang="en-US">xAPI cohort test 3</name>
-            <description lang="en-US">xAPI cohort test 3 description</description>
+            <description lang="en-US">xAPI cohort test 3</description>
             <launch>http://nachocinalli.github.io/xAPI-cohort-test-3/</launch>
         </activity>
     </activities>
