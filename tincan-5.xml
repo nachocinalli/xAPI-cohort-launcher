@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tincan xmlns="http://projecttincan.com/tincan.xsd">
+    <activities>
+        <activity id="http://nachocinalli.github.io/xAPI-cohort-test-5/" type="http://adlnet.gov/expapi/activities/course">
+            <name lang="en-US">xAPI cohort test 5</name>
+            <description lang="en-US">xAPI cohort test 5</description>
+            <launch>http://nachocinalli.github.io/xAPI-cohort-test-5/</launch>
+        </activity>
+    </activities>
+</tincan>
